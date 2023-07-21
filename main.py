@@ -5,7 +5,7 @@ from fastapi.responses import ORJSONResponse
 from pydantic import BaseModel
 import uvicorn
 from tiktok_scraper import Scraper
-
+import pyfiglet
 
 TITLE= "Tiktok_api_mini_Project_owo"
 SUMMARY="Deadpool's favorite app. Nuff said."
@@ -76,13 +76,12 @@ async def root():
 
 @app.get("/api/hybrid_parsing/{url:path}",  response_model= API_Hybrid_Response,tags= ['Hybrid Request (Tiktok&Douyin)'])
 async def scrape_video_data(url) :
-    """_summary_
-
+    """
     Args:
-        url (str): _description_
+        String with Url | Url
 
     Returns:
-        JSON: _description_
+        JSON
     """
     url: Annotated[str, Path(title="String with url | Url", description="你好")]
     if url:
@@ -90,5 +89,9 @@ async def scrape_video_data(url) :
         return ORJSONResponse(data)
 
 if __name__ == '__main__':
+    T = "Tiktok Api owo"
+    ASCII_art_1 = pyfiglet.figlet_format(T)
+    print(ASCII_art_1)
     uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True, workers=8)
+    
     
