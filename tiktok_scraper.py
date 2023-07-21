@@ -31,8 +31,9 @@ class Scraper:
         use regex to get url from string
         """
         try:
+            print('text:', text)
             url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
-            
+            print('url:', url)
             if len(url) > 0 :
                 return url[0]
         except Exception as re_error:
@@ -180,7 +181,7 @@ class Scraper:
         video_id = await self.get_douyin_video_id(video_url) if url_platform == 'douyin' else await self.get_tiktok_video_id(video_url)
         if video_id:
             print('getting video data')
-            data = await self.get_douyin_video_data(video_id) if url_platform == 'douyin' else await self.get_tiktok_video_data(video_url)
+            data = await self.get_douyin_video_data(video_id) if url_platform == 'douyin' else await self.get_tiktok_video_data(video_id)
             if data:
                 print("get video data succeed")
                 url_type_code = data['aweme_type']
@@ -294,7 +295,7 @@ class Scraper:
                     # 更新数据/Update data
                     result_data.update(api_data)
                     # 返回数据/Return data
-                    print(result_data)
+                    # print(result_data)
                     return result_data
                 except Exception as e:
                     traceback.print_exc()
