@@ -2,12 +2,6 @@ Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
-            steps {
-                // 检出代码库
-                git 'https://github.com/yohaneowo/Tiktok_api_mini_Project_owo.git'
-            }
-        }
 
         stage('Build') {
             steps {
