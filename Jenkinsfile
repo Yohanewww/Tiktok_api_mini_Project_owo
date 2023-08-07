@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // 构建 Docker 镜像
-                sh 'docker build projectowo .'
+                sh 'docker build -t projectowo .'
             }
         }
 
