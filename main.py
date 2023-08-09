@@ -4,8 +4,8 @@ from fastapi import FastAPI, Path
 from fastapi.responses import ORJSONResponse
 from pydantic import BaseModel
 import uvicorn
-from tiktok_scraper import Scraper
 import pyfiglet
+from tiktok_scraper import Scraper
 
 TITLE= "Tiktok_api_mini_Project_owo"
 SUMMARY="Deadpool's favorite app. Nuff said."
@@ -16,7 +16,8 @@ DESCRIPTION = """
 > [中文/Chinese]
 - 爬取抖音和TikTok的数据并返回。更多功能正在开发中。
 - 此項目是為了讓我學習如何開發Api而開發的，如果你有什麼建議或者想法，歡迎聯繫我。
-- 此項目的參考來自[https://github.com/Evil0ctal/Douyin_TikTok_Download_API](https://github.com/Evil0ctal/Douyin_TikTok_Download_API)
+- 此項目的參考來自[https://github.com/Evil0cta
+l/Douyin_TikTok_Download_API](https://github.com/Evil0ctal/Douyin_TikTok_Download_API)
 - 本项目仅供学习交流使用，严禁用于违法用途，如有侵权请联系作者。
 > [英文/English]
 - Crawl the data of Douyin and TikTok and return it. More features are under development.
@@ -91,6 +92,7 @@ async def scrape_video_data(url) :
 if __name__ == '__main__':
     T = "Tiktok Api owo"
     ASCII_art_1 = pyfiglet.figlet_format(T)
+    print(pyfiglet.__file__)
     print(ASCII_art_1)
     uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True, workers=8)
     
