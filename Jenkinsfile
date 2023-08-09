@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    tools {nodejs "{Nodejs}"}
+    tools {nodejs "Nodejs"}
 
     stages {
         stage('Install Apifox CLI') {
