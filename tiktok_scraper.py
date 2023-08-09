@@ -94,7 +94,7 @@ class Scraper:
         # 调用JavaScript函数
         query = urllib.parse.urlparse(url).query
         xbogus = execjs.compile(open('./X-Bogus.js', encoding="utf8").read()).call('sign', query, self.headers['User-Agent'])
-        # print('生成的X-Bogus签名为: {}'.format(xbogus))
+        print('生成的X-Bogus签名为: {}'.format(xbogus))
         new_url = url + "&X-Bogus=" + xbogus
         return new_url
 
