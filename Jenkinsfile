@@ -1,7 +1,20 @@
 pipeline {
     agent any
-    stages {
 
+    tools {nodejs "{Nodejs}"}
+
+    stages {
+        stage('Install Apifox CLI') {
+            steps {
+                sh 'npm install -g apifox-cli'
+            }
+        }
+
+        stage('Running Test Scenario') {
+            steps {
+                sh 'apifox run https://api.apifox.cn/api/v1/projects/3122443/api-test/ci-config/371736/detail?token=xprxMUsWMeDnlbJheRIxvx -r html,cli'
+            }
+        }
         stage('Build') {
             steps {
                 // 构建 Docker 镜像
