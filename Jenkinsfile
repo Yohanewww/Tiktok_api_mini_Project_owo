@@ -12,7 +12,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // 部署 Docker 容器
-                sh 'docker run -d -p 8000:8000 projectowo'
+                sh 'docker run -d -p 3366:8000 projectowo'
             }
         }
     }
