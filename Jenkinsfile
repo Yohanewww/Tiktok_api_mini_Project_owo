@@ -14,12 +14,11 @@ pipeline {
                         }
                     }
                     steps{
-                        
+                        sh 'pip install --user virtualenv'
+                        sh 'python3 -m venv .venv'
+                        sh '. .venv/bin/activate'
+                        sh 'pip install -r requiremen ts.txt'
                         script {
-                            sh 'pip install --user virtualenv'
-                            sh 'python3 -m venv .venv'
-                            sh '. .venv/bin/activate'
-                            sh 'pip install -r requiremen ts.txt'
                             def commandOutput = sh returnStdout: true, script: 'python main.py', 
                             if(commandOutput.contains('INFO:     Application startup complete.')){
                                 echo "main.py 运行成功！"
