@@ -94,6 +94,6 @@ if __name__ == '__main__':
     ASCII_art_1 = pyfiglet.figlet_format(T)
     print(pyfiglet.__file__)
     print(ASCII_art_1)
-    uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True, workers=8)
+    uvicorn.run('main:app', host='0.0.0.0', port=7788, reload=True, workers=8)
     
     
