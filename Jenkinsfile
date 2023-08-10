@@ -13,10 +13,10 @@ pipeline {
                         }
                     }
                     steps{
-                        sh 'python3 -m venv venv'
-                        sh 'source venv/bin/activate'
-                        sh 'pip install -r requirements.txt'
-                        sh 'python main.py'
+                        sh "python3 -m venv ${venvName}"
+                        sh ". ${venvName}/bin/activate"
+                        sh "pip install -r requirements.txt"
+                        sh "python main.py"
                     }
                 }
                 
