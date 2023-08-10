@@ -18,7 +18,7 @@ pipeline {
                         sh 'python3 -m venv .venv'
                         sh '. .venv/bin/activate'
                         sh 'pip install -r requiremen ts.txt'
-                        def commandOutput = sh(script: 'python main.py', returnStdout: true)
+                        def commandOutput = sh returnStdout: true, script: 'python main.py', 
                         if (commandOutput.contains('INFO:     Application startup complete.')){
                              echo "main.py 运行成功！"
                             stage('Install Apifox CLI') {
