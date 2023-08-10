@@ -13,7 +13,7 @@ pipeline {
                         sh 'python3 -m venv .venv'
                         sh '. .venv/bin/activate'
                         sh 'pip install -r requirements.txt'
-                        sh 'python3 main.py &'
+                        sh 'python3 main.py'
                     }
                 }
                 
