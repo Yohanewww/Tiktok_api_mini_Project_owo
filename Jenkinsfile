@@ -21,7 +21,8 @@ pipeline {
                         sh '. .venv/bin/activate'
                         sh 'pip install -r requirements.txt'
                         sh 'pkill -f "python3 main.py" || true' // 杀掉之前的进程/ 杀掉之前的进程
-                        sh 'python3 main.py'
+                        sh 'python3 main.py > /dev/null 2>&1 &'
+                        sh 'sleep 10' // 等待应用程序启动
                         sh 'apifox run https://api.apifox.cn/api/v1/projects/3122443/api-test/ci-config/371736/detail?token=xprxMUsWMeDnlbJheRIxvx -r html,cli'
 
                     }
