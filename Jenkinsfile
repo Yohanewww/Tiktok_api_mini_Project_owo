@@ -50,9 +50,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 // 部署 Docker 容器
-                sh 'docker stop projectowo || true'
-                sh 'docker rm projectowo || true'
-                // sh 'docker run -d -p 3366:3366 --name projectowo projectowo'
+                sh 'docker stop projectowob || true'
+                sh 'docker rm projectowob || true'
+                sh 'docker run -d -p 3366:3366 --name projectowob projectowo:latest'
             }
         }
     }
