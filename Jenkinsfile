@@ -10,11 +10,12 @@ pipeline {
                     agent {
                         docker {
                             image 'python:3.11.4-bookworm'
+                            args '-u root --privileged'
                         }
                     }
                     steps{
                         sh 'sudo pip install --user virtualenv'
-                        sh 'python3 -m venv venv'
+                        sh 'python3 -m venv .venv'
                         sh 'source venv/bin/activate'
                         sh 'pip install -r requirements.txt'
                         sh 'python main.py'
