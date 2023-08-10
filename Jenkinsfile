@@ -13,7 +13,7 @@ pipeline {
                     }
                 }
 
-                stage("Set up python enviroment for testing & Running Test Scenario"){
+                stage("Setup venv & Running Test Scenario"){
                     agent none
                     steps{
                         sh 'pip install --user virtualenv'
@@ -27,8 +27,6 @@ pipeline {
 
                     }
                 }
-                
-               
 
                 stage('Post-processing') {
                     steps {
