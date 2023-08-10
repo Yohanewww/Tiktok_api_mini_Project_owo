@@ -43,6 +43,7 @@ pipeline {
                     }
                 }
             }
+        }
         // stage('Build') {
         //     steps {
         //         // 构建 Docker 镜像
