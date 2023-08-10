@@ -51,7 +51,7 @@ pipeline {
                 // 部署 Docker 容器
                 sh 'docker stop projectowob || true'
                 sh 'docker rm projectowob || true'
-                sh 'docker run -d -p --name projectowob 3366:3366 projectowo'
+                sh 'docker run -d -p 3366:3366 --name projectowob projectowo'
             }
         }
     }
