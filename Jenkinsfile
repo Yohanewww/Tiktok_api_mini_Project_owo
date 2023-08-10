@@ -42,6 +42,7 @@ pipeline {
         stage('Build') {
             steps {
                 // 构建 Docker 镜像
+                sh 'docker rmi projectowo:latest || true'
                 sh 'docker build -t projectowo .'
             }
         }
@@ -49,10 +50,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 // 部署 Docker 容器
-                sh 'docker stop projectowob || true'
-                sh 'docker rm projectowob || true'
-                sh 'docker rmi projectowo:latest || true'
-                sh 'docker run -d -p 3366:3366 --name projectowob projectowo'
+                sh 'docker stop projectowo || true'
+                sh 'docker rm projectowo || true'
+                sh 'docker run -d -p 3366:3366 --name projectowo projectowo'
             }
         }
     }
