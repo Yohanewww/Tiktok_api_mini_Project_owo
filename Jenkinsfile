@@ -7,12 +7,7 @@ pipeline {
         stage("Testing Api...") {
             stages{
                 stage("Set up python enviroment for testing"){
-                    agent {
-                        docker {
-                            image 'python:3.11.4-bookworm'
-                            args '-u root --privileged'
-                        }
-                    }
+                    agent none
                     steps{
                         sh 'pip install --user virtualenv'
                         sh 'python3 -m venv .venv'
