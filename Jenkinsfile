@@ -6,7 +6,14 @@ pipeline {
     stages {
         stage("Testing Api...") {
             stages{
-                stage("Set up python enviroment for testing"){
+
+                stage('Install Apifox CLI') {
+                    steps {
+                        sh 'npm install -g apifox-cli'
+                    }
+                }
+
+                stage("Set up python enviroment for testing & Running Test Scenario"){
                     agent none
                     steps{
                         sh 'pip install --user virtualenv'
@@ -15,21 +22,12 @@ pipeline {
                         sh 'pip install -r requirements.txt'
                         sh 'pkill -f "python3 main.py" || true' // 杀掉之前的进程/ 杀掉之前的进程
                         sh 'python3 main.py'
+                        sh 'apifox run https://api.apifox.cn/api/v1/projects/3122443/api-test/ci-config/371736/detail?token=xprxMUsWMeDnlbJheRIxvx -r html,cli'
+
                     }
                 }
                 
-
-                stage('Install Apifox CLI') {
-                    steps {
-                        sh 'npm install -g apifox-cli'
-                    }
-                }
-
-                stage('Running Test Scenario') {
-                    steps {
-                        sh 'apifox run https://api.apifox.cn/api/v1/projects/3122443/api-test/ci-config/371736/detail?token=xprxMUsWMeDnlbJheRIxvx -r html,cli'
-                    }
-                }
+               
 
                 stage('Post-processing') {
                     steps {
