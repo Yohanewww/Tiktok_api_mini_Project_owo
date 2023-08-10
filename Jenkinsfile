@@ -33,8 +33,8 @@ pipeline {
                     }
                 }
 
-                post {
-                    always {
+                stage('Post-processing') {
+                    steps {
                         script {
                             // 停止和删除 Python 环境
                             sh 'deactivate || true'
