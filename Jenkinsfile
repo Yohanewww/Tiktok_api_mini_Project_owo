@@ -39,18 +39,20 @@ pipeline {
                 }
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         // 构建 Docker 镜像
-        //         sh 'docker build -t projectowo .'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                // 构建 Docker 镜像
+                sh 'docker build -t projectowo .'
+            }
+        }
 
-        // stage('Deploy') {
-        //     steps {
-        //         // 部署 Docker 容器
-        //         sh 'docker run -d -p 3366:8000 projectowo'
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+                // 部署 Docker 容器
+                sh 'docker stop projectowob || true'
+                sh 'docker rm projectowob || true'
+                sh 'docker run -d -p --name projectowob 3366:3366 projectowo'
+            }
+        }
     }
 }
