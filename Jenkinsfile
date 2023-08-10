@@ -34,7 +34,7 @@ pipeline {
                             // 停止和删除 Python 环境
                             sh 'deactivate || true'
                             sh 'rm -rf venv || true'
-                            // sh 'pkill -f "python3 main.py" || true' // 杀掉之前的进程/ 杀掉之前的进程
+                            sh 'pkill -f "python3 main.py" || true' // 杀掉之前的进程/ 杀掉之前的进程
                         }
                     }
                 }
