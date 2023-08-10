@@ -53,7 +53,7 @@ pipeline {
                 sh 'docker stop projectowob || true'
                 sh 'docker rm projectowob || true'
                 sh 'sleep 10'
-                sh 'docker run -d -p 3366:8000 --name projectowob projectowo:latest'
+                sh 'docker run -d -p 4488:4488 --name projectowob projectowo:latest'
             }
         }
     }
