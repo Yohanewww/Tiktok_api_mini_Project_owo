@@ -5,7 +5,7 @@ pipeline {
 
     stages {
         stage("Testing Api...") {
-            steps{
+            stages{
                 stage("Set up python enviroment for testing"){
                     agent {
                         docker {
