@@ -56,6 +56,7 @@ jobs:
           with:
             registry: registry.hub.docker.com
             repository: "${{ github.event.repository.name }}"
+            organization: "yohane0w0"
             login: "${{ secrets.DOCKERHUB_USERNAME }}"
             password: "${{ secrets.DOCKERHUB_PASSWORD }}"
             platforms: linux/amd64,linux/arm64
