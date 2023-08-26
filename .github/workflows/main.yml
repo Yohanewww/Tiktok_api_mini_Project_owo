@@ -56,7 +56,7 @@ jobs:
           with:
             registry: registry.hub.docker.com
             organization: "${{ github.event.repository.owner.login }}"
-            repository: "${{ tiktok_api_mini_project_owo }}"
+            repository: "tiktok_api_mini_project_owo"
             login: "${{ secrets.DOCKERHUB_USERNAME }}"
             password: "${{ secrets.DOCKERHUB_PASSWORD }}"
             platforms: linux/amd64,linux/arm64
