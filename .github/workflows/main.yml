@@ -49,7 +49,8 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v3
-        - run: echo "REPOSITORY_NAME=${github.event.repository.name}"
+        - name: get epository name
+          run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
         - name: Build Docker Image
           id: build
           uses: cloudposse/github-action-docker-build-push@main
