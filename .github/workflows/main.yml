@@ -9,7 +9,7 @@ on:
       - main  # 你的主分支名称
 
 jobs:
-  api_tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -57,7 +57,7 @@ jobs:
         password: "${{ secrets.DOCKERHUB_PASSWORD }}"
         platforms: linux/amd64,linux/arm64
         
-    - run: echo Build Docker & Push Success🎉"
+    - run: echo Build Docker & Push Image Success🎉"
     outputs:
       image: ${{ steps.build.outputs.image }}
       tag: ${{ steps.build.outputs.tag }}
