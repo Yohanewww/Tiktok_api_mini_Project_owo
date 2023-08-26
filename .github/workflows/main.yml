@@ -28,7 +28,7 @@ jobs:
       run: |
         # 运行你的 API 测试命令
         # 例如：python test.py
-        python main.py
+        python main.py & 
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
