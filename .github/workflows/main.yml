@@ -49,15 +49,14 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v3
-        - name: get epository name
-          run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+
         - name: Build Docker Image
           id: build
           uses: cloudposse/github-action-docker-build-push@main
           with:
             registry: registry.hub.docker.com
             organization: "${{ github.event.repository.owner.login }}"
-            repository: "${{ github.event.repository.name }}"
+            repository: "${{ github.event.repository.name | toLowerCase()}}"
             login: "${{ secrets.DOCKERHUB_USERNAME }}"
             password: "${{ secrets.DOCKERHUB_PASSWORD }}"
             platforms: linux/amd64,linux/arm64
