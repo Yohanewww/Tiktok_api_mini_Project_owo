@@ -56,7 +56,8 @@ jobs:
         login: "${{ secrets.DOCKERHUB_USERNAME }}"
         password: "${{ secrets.DOCKERHUB_PASSWORD }}"
         platforms: linux/amd64,linux/arm64
-
+        
+    - run: echo Build Docker & Push Success🎉"
     outputs:
       image: ${{ steps.build.outputs.image }}
       tag: ${{ steps.build.outputs.tag }}
