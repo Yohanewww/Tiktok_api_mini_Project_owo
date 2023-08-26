@@ -29,7 +29,8 @@ jobs:
         # 运行你的 API 测试命令
         # 例如：python test.py
         python main.py & 
-
+    - run: echo "temp deployed for api test success🎉"
+    
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
@@ -40,24 +41,21 @@ jobs:
 
     - name: Running Test Scenario
       run: apifox run https://api.apifox.cn/api/v1/projects/3122443/api-test/ci-config/371736/detail?token=xprxMUsWMeDnlbJheRIxvx -r html,cli
-  
-  docker_build:
-    runs-on: ubuntu-latest
+    - run: echo "Api Test Success🎉"
+    
+    - name: Checkout
+      uses: actions/checkout@v3
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Build
-        id: build
-        uses: cloudposse/github-action-docker-build-push@main
-        with:
-          registry: registry.hub.docker.com
-          organization: "${{ github.event.repository.owner.login }}"
-          repository: "${{ github.event.repository.name }}"
-          login: "${{ secrets.DOCKERHUB_USERNAME }}"
-          password: "${{ secrets.DOCKERHUB_PASSWORD }}"
-          platforms: linux/amd64,linux/arm64
+    - name: Build Docker Image
+      id: build
+      uses: cloudposse/github-action-docker-build-push@main
+      with:
+        registry: registry.hub.docker.com
+        organization: "${{ github.event.repository.owner.login }}"
+        repository: "${{ github.event.repository.name }}"
+        login: "${{ secrets.DOCKERHUB_USERNAME }}"
+        password: "${{ secrets.DOCKERHUB_PASSWORD }}"
+        platforms: linux/amd64,linux/arm64
 
     outputs:
       image: ${{ steps.build.outputs.image }}
